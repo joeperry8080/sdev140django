@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -24,8 +23,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -38,11 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 )
 
-MIDDLEWARE_CLASSES = (
+# *** DEPRECATED *** MIDDLEWARE_CLASSES = ( 
+    # https://stackoverflow.com/questions/56923576/django-e-408-e-409-and-e-410-errors-on-runserver
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -50,7 +50,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'Work_manager.urls'
 
 WSGI_APPLICATION = 'Work_manager.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -67,7 +66,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'US/Eastern'
 
 USE_I18N = True
 
@@ -80,3 +79,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Templates https://stackoverflow.com/questions/30005127/django-admin-breaks-after-upgrading-to-1-8-1
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # insert your TEMPLATE_DIRS here
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
