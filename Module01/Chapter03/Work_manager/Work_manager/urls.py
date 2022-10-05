@@ -1,14 +1,15 @@
-#from django.conf.urls import include, url
-from django.urls import include, re_path
-
 from django.contrib import admin
+from django.urls import path
+
+from django.contrib.auth import views as auth_views
 admin.autodiscover()
 
-urlpatterns = [
-    # Examples:
-    # url(r'^$', 'Work_manager.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+# importing the home function from index.py in TasksManager > views > index.py
+# need to do this because strings are not allowed any longer in urlpatterns
+from TasksManager.views.index import home
 
-    #url(r'^admin/', include(admin.site.urls)),
-    re_path(r'^admin/', admin.site.urls),
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # this path is looking for the index 
+    path("", home, name="home"),
 ]

@@ -3,8 +3,8 @@ from django.shortcuts import render
 """
 View for index page. 
 """
-
-def page(request):
+# renamed from "page" to public_index for clarity
+def public_index(request):
 	my_variable = "Hello World !"
 	my_hello = "hello WORLD"
 	years_old = 15
