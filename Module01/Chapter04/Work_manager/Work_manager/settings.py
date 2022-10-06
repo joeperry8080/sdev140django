@@ -19,7 +19,6 @@ ROOT_URLCONF = 'Work_manager.urls'
 # Always use forward slashes, even on Windows.  
 # Don't forget to use absolute paths, not relative paths.
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-#TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, '../TasksManager/templates'),)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -32,7 +31,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -93,7 +92,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # insert your TEMPLATE_DIRS here
-            os.path.join(PROJECT_ROOT, '../TasksManager/templates')
+            os.path.join(PROJECT_ROOT, '../TasksManager/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {

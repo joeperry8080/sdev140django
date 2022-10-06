@@ -3,8 +3,9 @@
     <title>
       {% block title_html %}{% endblock %}
     </title>
-    {% load staticfiles %}
+    {% load static %}
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <!--info on static tag: https://docs.djangoproject.com/en/4.1/intro/tutorial06/-->
   </head>
   <body>
     <h1>
@@ -12,6 +13,9 @@
     </h1>
     <article>
       {% block article_content %}{% endblock %}
+    </article>
+    <article>
+        <h2>Here is a link: <a href="{% url 'public_connection' %}">Connection</a></h2>
     </article>
   </body>
 </html>

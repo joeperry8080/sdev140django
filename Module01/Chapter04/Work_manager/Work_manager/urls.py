@@ -12,9 +12,8 @@ from TasksManager.views.connection import connections
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", page, name="home"),
-    path('index', public_index, name="public_index"),
-    path('connections', connections, name="public_connections")
+    path('', public_index, name="public_index"),
+    path('connection', connections, name="public_connection")
     
     # deprecated url(r'^index$', 'TasksManager.views.index.page', name="public_index"),
     # debrecated url(r'^connection$', 'TasksManager.views.connection.page', name="public_connection"),
